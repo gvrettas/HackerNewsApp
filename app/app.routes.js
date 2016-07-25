@@ -14,6 +14,12 @@
 			controllerAs: 'model'
 		});
 
+        $routeProvider.when('/stories/:id/detail', {
+            templateUrl: 'storyDetail/storyDetail.html',
+            controller: 'StoryDetailController',
+            controllerAs: 'model'
+        });
+
 		$routeProvider.otherwise({redirectTo: '/stories'});
     }
 
