@@ -5,13 +5,11 @@
         .module('hackernewsApp')
         .factory('storiesService', storiesService);
 
-    storiesService.$inject = ['$http', '$q'];
+    storiesService.$inject = ['$http', '$q', 'hackernewsBaseUrl', 'hackernewsUrlSuffix'];
 
     /* @ngInject */
-    function storiesService($http, $q) {
-    	var baseUrl = 'https://hacker-news.firebaseio.com/v0/'
-    	var urlSuffix = '.json?print=pretty';
-        var topStoriesUrl = baseUrl + 'topstories' + urlSuffix;
+    function storiesService($http, $q, hackernewsBaseUrl, hackernewsUrlSuffix) {
+        var topStoriesUrl = hackernewsBaseUrl + 'topstories' + hackernewsUrlSuffix;
 
         var service = {
             getTopStories: getTopStories
@@ -55,7 +53,7 @@
         }
 
         function getStoryDetail(storyId) {
-        	var storyDetailUrl = baseUrl + 'item/' + storyId + urlSuffix;
+        	var storyDetailUrl = hackernewsBaseUrl + 'item/' + storyId + hackernewsUrlSuffix;
 
         	var storyDetailPromise = $http.get(storyDetailUrl);
         	return storyDetailPromise.then(function(storyDetail) {
