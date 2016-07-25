@@ -5,10 +5,10 @@
         .module('hackernewsApp')
         .factory('storiesService', storiesService);
 
-    storiesService.$inject = ['$http', '$q', 'hackernewsBaseUrl', 'hackernewsUrlSuffix'];
+    storiesService.$inject = ['$http', '$q', 'hackernewsBaseUrl', 'hackernewsUrlSuffix', 'commonFunctions'];
 
     /* @ngInject */
-    function storiesService($http, $q, hackernewsBaseUrl, hackernewsUrlSuffix) {
+    function storiesService($http, $q, hackernewsBaseUrl, hackernewsUrlSuffix, commonFunctions) {
         var topStoriesUrl = hackernewsBaseUrl + 'topstories' + hackernewsUrlSuffix;
 
         var service = {
@@ -18,28 +18,24 @@
         return service;
 
         ////////////////
-        function errorCallback(error) {
-        	return $q.reject(error);
-        }
-
         function getTopStories() {
         	var storyIdsPromise = getTopStoriesIds();
         	
     		return storyIdsPromise.then(function(storyIds) {
     			var storyDetailPromises = getTopStoriesDetails(storyIds);
     			return $q.all(storyDetailPromises);
-    		}, errorCallback)
+    		}, commonFunctions.promiseErrorCallback)
 
     		.then(function(storyDetails) {
     			return storyDetails;
-    		}, errorCallback);
+    		}, commonFunctions.promiseErrorCallback);
         }
 
         function getTopStoriesIds() {
         	var topStoriesPromise = $http.get(topStoriesUrl);
         	return topStoriesPromise.then(function(stories) {
         		return stories.data || [];
-        	}, errorCallback);
+        	}, commonFunctions.promiseErrorCallback);
         }
 
         function getTopStoriesDetails(storyIds) {
@@ -58,7 +54,7 @@
         	var storyDetailPromise = $http.get(storyDetailUrl);
         	return storyDetailPromise.then(function(storyDetail) {
         		return storyDetail.data || {};
-        	}, errorCallback);
+        	}, commonFunctions.promiseErrorCallback);
         }
     }
 })();
