@@ -3,6 +3,7 @@
 
     angular
         .module('hackernewsApp', [
-            'ngRoute'
+            'ngRoute',
+            'ngMaterial'
         ]);
 })();
