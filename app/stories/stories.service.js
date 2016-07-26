@@ -5,10 +5,10 @@
         .module('hackernewsApp')
         .factory('storiesService', storiesService);
 
-    storiesService.$inject = ['$http', '$q', 'hackernewsBaseUrl', 'hackernewsUrlSuffix', 'commonFunctions'];
+    storiesService.$inject = ['$http', '$q', 'hackernewsBaseUrl', 'hackernewsUrlSuffix', 'commonFunctions', 'storyDetailService'];
 
     /* @ngInject */
-    function storiesService($http, $q, hackernewsBaseUrl, hackernewsUrlSuffix, commonFunctions) {
+    function storiesService($http, $q, hackernewsBaseUrl, hackernewsUrlSuffix, commonFunctions, storyDetailService) {
         var topStoriesUrl = hackernewsBaseUrl + 'topstories' + hackernewsUrlSuffix;
 
         var service = {
@@ -42,19 +42,10 @@
         	var storyDetailPromises = [];
 
         	_.forEach(storyIds, function(storyId) {
-        		storyDetailPromises.push(getStoryDetail(storyId));
+        		storyDetailPromises.push(storyDetailService.getStoryDetail(storyId));
         	});
 
         	return storyDetailPromises;
-        }
-
-        function getStoryDetail(storyId) {
-        	var storyDetailUrl = hackernewsBaseUrl + 'item/' + storyId + hackernewsUrlSuffix;
-
-        	var storyDetailPromise = $http.get(storyDetailUrl);
-        	return storyDetailPromise.then(function(storyDetail) {
-        		return storyDetail.data || {};
-        	}, commonFunctions.promiseErrorCallback);
         }
     }
 })();
