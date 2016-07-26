@@ -18,7 +18,7 @@
 
         function initialise() { 
             var storyId = $routeParams.id;
-            var storyDetailPromise = storyDetailService.getStoryDetail(storyId);
+            var storyDetailPromise = storyDetailService.getStoryWithComments(storyId);
             storyDetailPromise.then(function(storyDetail) {
                 model.storyDetail = storyDetail;
             });
