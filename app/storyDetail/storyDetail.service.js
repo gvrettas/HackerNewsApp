@@ -5,10 +5,10 @@
         .module('hackernewsApp')
         .factory('storyDetailService', storyDetailService);
 
-    storyDetailService.$inject = ['$http', '$q', 'hackernewsBaseUrl', 'hackernewsUrlSuffix', 'commonFunctions'];
+    storyDetailService.$inject = ['$http', '$q', 'hackernewsBaseUrl', 'hackernewsUrlSuffix', 'commonFunctions', '_'];
 
     /* @ngInject */
-    function storyDetailService($http, $q, hackernewsBaseUrl, hackernewsUrlSuffix, commonFunctions) {
+    function storyDetailService($http, $q, hackernewsBaseUrl, hackernewsUrlSuffix, commonFunctions, _) {
         var service = {
             getStoryDetail: getStoryDetail,
             getStoryWithComments: getStoryWithComments
