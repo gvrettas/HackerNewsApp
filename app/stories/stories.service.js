@@ -5,13 +5,11 @@
         .module('hackernewsApp')
         .factory('storiesService', storiesService);
 
-    storiesService.$inject = ['$http', '$q'];
+    storiesService.$inject = ['$http', '$q', 'hackernewsBaseUrl', 'hackernewsUrlSuffix', 'commonFunctions', 'storyDetailService'];
 
     /* @ngInject */
-    function storiesService($http, $q) {
-    	var baseUrl = 'https://hacker-news.firebaseio.com/v0/'
-    	var urlSuffix = '.json?print=pretty';
-        var topStoriesUrl = baseUrl + 'topstories' + urlSuffix;
+    function storiesService($http, $q, hackernewsBaseUrl, hackernewsUrlSuffix, commonFunctions, storyDetailService) {
+        var topStoriesUrl = hackernewsBaseUrl + 'topstories' + hackernewsUrlSuffix;
 
         var service = {
             getTopStories: getTopStories
@@ -20,47 +18,34 @@
         return service;
 
         ////////////////
-        function errorCallback(error) {
-        	return $q.reject(error);
-        }
-
         function getTopStories() {
         	var storyIdsPromise = getTopStoriesIds();
         	
     		return storyIdsPromise.then(function(storyIds) {
     			var storyDetailPromises = getTopStoriesDetails(storyIds);
     			return $q.all(storyDetailPromises);
-    		}, errorCallback)
+    		}, commonFunctions.promiseErrorCallback)
 
     		.then(function(storyDetails) {
     			return storyDetails;
-    		}, errorCallback);
+    		}, commonFunctions.promiseErrorCallback);
         }
 
         function getTopStoriesIds() {
         	var topStoriesPromise = $http.get(topStoriesUrl);
         	return topStoriesPromise.then(function(stories) {
         		return stories.data || [];
-        	}, errorCallback);
+        	}, commonFunctions.promiseErrorCallback);
         }
 
         function getTopStoriesDetails(storyIds) {
         	var storyDetailPromises = [];
 
         	_.forEach(storyIds, function(storyId) {
-        		storyDetailPromises.push(getStoryDetail(storyId));
+        		storyDetailPromises.push(storyDetailService.getStoryDetail(storyId));
         	});
 
         	return storyDetailPromises;
-        }
-
-        function getStoryDetail(storyId) {
-        	var storyDetailUrl = baseUrl + 'item/' + storyId + urlSuffix;
-
-        	var storyDetailPromise = $http.get(storyDetailUrl);
-        	return storyDetailPromise.then(function(storyDetail) {
-        		return storyDetail.data || {};
-        	}, errorCallback);
         }
     }
 })();
