@@ -1,8 +1,7 @@
 {
-  "name": "angular-seed",
-  "description": "A starter project for AngularJS",
+  "name": "HackernewsApp",
+  "description": "An app showing the top Hackernews stories",
   "version": "0.0.0",
-  "homepage": "https://github.com/angular/angular-seed",
   "license": "MIT",
   "private": true,
   "dependencies": {
