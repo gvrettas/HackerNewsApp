@@ -5,3 +5,6 @@ bower_components/
 tmp
 .DS_Store
 .idea
+.sass-cache/
+# The built css won't be checked in as it is a generated file
+app/css/
