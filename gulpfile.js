@@ -13,7 +13,8 @@ gulp.task('serve', ['sass'], function() {
     var options = {
         server: {
             baseDir: 'app'
-        }
+        },
+        open: 'external'
     };
 
     browserSync(options);
