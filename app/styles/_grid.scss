@@ -1,0 +1,24 @@
+.storiesGrid {
+    md-grid-tile {
+        border: 1px solid $primary-hue-2;
+        border-radius: $border-radius;
+        box-shadow: 1px 1px 3px 0 transparentize(#000, 0.4);
+
+        md-grid-tile-header {
+            padding: 4px;
+            background: $primary-default;
+        }   
+    }
+}
+
+.storyContent {
+    position: absolute;
+    top: 48px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 4px;
+    background: #fff;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+}

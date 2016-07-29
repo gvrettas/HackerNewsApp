@@ -1,0 +1,21 @@
+@import '../bower_components/md-colors/src/md-colors';
+
+$primary-default: md-color($primaryPalette, $primaryDefaultShade);
+$primary-hue-1: md-color($primaryPalette, $primaryShade1);
+$primary-hue-2: md-color($primaryPalette, $primaryShade2);
+$primary-hue-3: md-color($primaryPalette, $primaryShade3);
+
+$accent-default: md-color($accentPalette, $accentDefaultShade);
+$accent-hue-1: md-color($accentPalette, $accentShade1);
+$accent-hue-2: md-color($accentPalette, $accentShade2);
+$accent-hue-3: md-color($accentPalette, $accentShade3);
+
+$warn-default: md-color($warnPalette, $warnDefaultShade);
+$warn-hue-1: md-color($warnPalette, $warnShade1);
+$warn-hue-2: md-color($warnPalette, $warnShade2);
+$warn-hue-3: md-color($warnPalette, $warnShade3);
+
+$background-default: md-color($backgroundPalette, $backgroundDefaultShade);
+$background-hue-1: md-color($backgroundPalette, $backgroundShade1);
+$background-hue-2: md-color($backgroundPalette, $backgroundShade2);
+$background-hue-3: md-color($backgroundPalette, $backgroundShade3);
