@@ -1,1 +1,30 @@
+$border-radius: 4px;
 
+.storyContent {
+    position: absolute;
+    top: 48px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 4px;
+}
+
+.wordWrap {
+    word-break: break-word;
+}
+
+md-grid-tile {
+    border: 1px solid;
+    border-radius: $border-radius;
+    box-shadow: 1px 1px 3px 0 transparentize(#000, 0.5);
+
+    md-grid-tile-header {
+        border-top-right-radius: $border-radius;
+        border-top-left-radius: $border-radius;
+        padding: 4px;
+    }   
+}
+
+a[ng-click] {
+    cursor: pointer;
+}
