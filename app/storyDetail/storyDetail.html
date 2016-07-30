@@ -37,4 +37,33 @@
             <span flex="85">{{model.storyDetail.score}}</span>
         </div>
     </div>
+
+    <div layout="row">
+        <h3 flex>Comments</h3>
+
+        <md-input-container flex>
+            <label>Sort By</label>
+            
+            <md-select ng-model="model.sortBy">
+                <md-option ng-repeat="sortOption in model.commentSortOptions" value="{{sortOption.sortBy}}">
+                    {{sortOption.label}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+
+    <div class="comments">
+        <md-card ng-repeat="comment in model.storyDetail.comments | orderBy:model.sortBy">
+            <md-card-content>
+                <div ng-bind-html="comment.text"></div>
+            </md-card-content>
+
+            <md-divider></md-divider>
+
+            <md-card-actions layout="row" layout-align="end center">
+                <span>{{comment.by}}</span>
+                <span>, {{comment.time * 1000 | date:'dd/MM/yyyy h:mm a'}}</span>
+            </md-card-actions>
+        </md-card>
+    </div>
 </md-content>

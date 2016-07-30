@@ -19,3 +19,10 @@
         padding: 4px;
     }
 }
+
+.comments > md-card {
+    border: 1px solid $primary-hue-2;
+    border-radius: $border-radius;
+    background: #fff;
+    box-shadow: 1px 1px 3px 0 transparentize(#000, 0.4);
+}
