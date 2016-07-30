@@ -27,7 +27,13 @@
 
 				<div flex="grow" layout="row">
 					<span flex="15">URL</span>
-					<a flex="85" class="wordWrap" ng-click="model.openUrl(story.url)">{{story.url}}</a>
+					<a flex="75" class="wordWrap" ng-click="model.openUrl(story.url)">
+						{{story.url}}
+					</a>
+					<md-button flex="10" class="md-icon-button" ng-click="model.openUrl(story.url)">
+						<md-icon class="material-icons urlIcons">open_in_new</md-icon>	
+					</md-button>
+					
 				</div>
 
 				<div flex="grow" layout="row">
@@ -40,6 +46,12 @@
 					<span flex="85">{{story.score}}</span>
 				</div>
 			</div>
+
+			<md-grid-tile-footer layout="row" layout-align="end center">
+				<md-button class="md-icon-button md-accent md-hue-2">
+					<md-icon>forward</md-icon>
+				</md-button>
+			</md-grid-tile-footer>
 		</md-grid-tile>
 	</md-grid-list>
 </md-content>

@@ -7,7 +7,11 @@
         md-grid-tile-header {
             padding: 4px;
             background: $primary-default;
-        }   
+        }
+
+        md-grid-tile-footer {
+            background: transparent;
+        }
     }
 }
 
