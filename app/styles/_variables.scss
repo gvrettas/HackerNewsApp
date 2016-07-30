@@ -1,0 +1,27 @@
+$border-radius: 4px;
+
+// Used in theme.scss, should match the colour theme defined in app.config.js
+$primaryPalette: 'deep-purple';
+$accentPalette: 'amber';
+$warnPalette: 'red';
+$backgroundPalette: 'grey';
+
+$primaryDefaultShade: '500';
+$primaryShade1: '300';
+$primaryShade2: '800';
+$primaryShade3: 'a100';
+
+$accentDefaultShade: 'a200';
+$accentShade1: 'a100';
+$accentShade2: 'a400';
+$accentShade3: 'a700';
+
+$warnDefaultShade: '500';
+$warnShade1: '300';
+$warnShade2: '800';
+$warnShade3: 'a100';
+
+$backgroundDefaultShade: '400';
+$backgroundShade1: '200';
+$backgroundShade2: '600';
+$backgroundShade3: '300';
