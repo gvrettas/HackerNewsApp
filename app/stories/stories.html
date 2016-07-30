@@ -30,10 +30,11 @@
 					<a flex="75" class="wordWrap" ng-click="model.openUrl(story.url)">
 						{{story.url}}
 					</a>
-					<md-button flex="10" class="md-icon-button" ng-click="model.openUrl(story.url)">
-						<md-icon class="material-icons urlIcons">open_in_new</md-icon>	
-					</md-button>
-					
+                    <span flex="10">
+                        <md-button class="md-icon-button" ng-click="model.openUrl(story.url)">
+                            <md-icon class="material-icons urlIcons">open_in_new</md-icon>	
+                        </md-button>
+                    </span>
 				</div>
 
 				<div flex="grow" layout="row">
