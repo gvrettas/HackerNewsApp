@@ -2,7 +2,9 @@
     word-break: break-word;
 }
 
-
+.md-select-menu-container md-content {
+    background: #fff;
+}
 
 a[ng-click] {
     cursor: pointer;
