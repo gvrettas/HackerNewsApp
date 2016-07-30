@@ -5,12 +5,13 @@
         .module('hackernewsApp')
         .factory('commonFunctions', commonFunctions);
 
-    commonFunctions.$inject = ['$q'];
+    commonFunctions.$inject = ['$q', '$window'];
 
     /* @ngInject */
-    function commonFunctions($q) {
+    function commonFunctions($q, $window) {
         var service = {
-            promiseErrorCallback: promiseErrorCallback
+            promiseErrorCallback: promiseErrorCallback,
+            openUrl: openUrl
         };
         
         return service;
@@ -18,6 +19,10 @@
         ////////////////
         function promiseErrorCallback() { 
             return $q.reject(error);
+        }
+
+        function openUrl(url) {
+            $window.open(url, '_blank');
         }
     }
 })();

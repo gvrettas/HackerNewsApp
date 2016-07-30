@@ -5,12 +5,15 @@
         .module('hackernewsApp')
         .controller('StoryDetailController', StoryDetailController);
 
-    StoryDetailController.$inject = ['$routeParams', 'storyDetailService'];
+    StoryDetailController.$inject = ['$routeParams', '$location', 'storyDetailService', 'commonFunctions'];
 
     /* @ngInject */
-    function StoryDetailController($routeParams, storyDetailService) {
+    function StoryDetailController($routeParams, $location, storyDetailService, commonFunctions) {
         var model = this;
         model.storyDetail = {};
+
+        model.viewTopStories = viewTopStories;
+        model.openUrl = commonFunctions.openUrl;
 
         initialise();
 
@@ -22,6 +25,11 @@
             storyDetailPromise.then(function(storyDetail) {
                 model.storyDetail = storyDetail;
             });
+        }
+
+        function viewTopStories() {
+            var storiesUrl = 'stories'; 
+            $location.path(storiesUrl);
         }
     }
 })();
