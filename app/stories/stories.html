@@ -10,7 +10,7 @@
 		md-row-height="1:1" md-gutter="5px" class="storiesGrid">
 		<md-grid-tile ng-repeat="story in model.topStories"
 			md-col-span="1" md-row-span="2">
-			<md-grid-tile-header>
+			<md-grid-tile-header ng-click="model.viewDetail(story.id)">
 				<header>{{story.title}}</header>
 			</md-grid-tile-header>
 
@@ -48,7 +48,7 @@
 			</div>
 
 			<md-grid-tile-footer layout="row" layout-align="end center">
-				<md-button class="md-icon-button md-accent md-hue-2">
+				<md-button class="md-icon-button md-accent md-hue-2" ng-click="model.viewDetail(story.id)">
 					<md-icon>forward</md-icon>
 				</md-button>
 			</md-grid-tile-footer>
