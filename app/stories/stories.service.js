@@ -5,10 +5,10 @@
         .module('hackernewsApp')
         .factory('storiesService', storiesService);
 
-    storiesService.$inject = ['$http', '$q', 'hackernewsBaseUrl', 'hackernewsUrlSuffix', 'commonFunctions', 'storyDetailService', '_'];
+    storiesService.$inject = ['$http', '$q', 'hackernewsBaseUrl', 'hackernewsUrlSuffix', 'commonFunctions', 'storyDetailService', '_', 'loadingOverlayToggler'];
 
     /* @ngInject */
-    function storiesService($http, $q, hackernewsBaseUrl, hackernewsUrlSuffix, commonFunctions, storyDetailService, _) {
+    function storiesService($http, $q, hackernewsBaseUrl, hackernewsUrlSuffix, commonFunctions, storyDetailService, _, loadingOverlayToggler) {
         var topStoriesUrl = hackernewsBaseUrl + 'topstories' + hackernewsUrlSuffix;
 
         var service = {
@@ -19,6 +19,7 @@
 
         ////////////////
         function getTopStories() {
+            loadingOverlayToggler.showLoading();
         	var storyIdsPromise = getTopStoriesIds();
         	
     		return storyIdsPromise.then(function(storyIds) {
@@ -27,6 +28,7 @@
     		}, commonFunctions.promiseErrorCallback)
 
     		.then(function(storyDetails) {
+                loadingOverlayToggler.hideLoading();
     			return storyDetails;
     		}, commonFunctions.promiseErrorCallback);
         }

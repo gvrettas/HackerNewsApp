@@ -1,0 +1,24 @@
+.loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 100%;
+    right: 0;
+    z-index: 100;
+    background: transparentize($background-hue-2, 0.6);
+    transition: bottom 0.4s;
+    
+    &.visible {
+        bottom: 0;
+    }
+
+    md-progress-circular {
+        position: absolute;
+        top: 50%;
+        margin-top: -55px;
+    }
+}
+
+body.loadingVisible {
+    overflow: hidden;
+}

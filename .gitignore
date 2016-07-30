@@ -6,5 +6,6 @@ tmp
 .DS_Store
 .idea
 .sass-cache/
+.vscode/
 # The built css won't be checked in as it is a generated file
 app/css/
