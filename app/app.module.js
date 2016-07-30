@@ -4,6 +4,7 @@
     angular
         .module('hackernewsApp', [
             'ngRoute',
-            'ngMaterial'
+            'ngMaterial',
+            'ngSanitize'
         ]);
 })();
