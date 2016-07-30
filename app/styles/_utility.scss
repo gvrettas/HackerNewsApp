@@ -6,6 +6,14 @@
     background: #fff;
 }
 
-a[ng-click] {
-    cursor: pointer;
+a {
+    color: #0277BD;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &[ng-click] {
+        cursor: pointer;
+    }
 }
