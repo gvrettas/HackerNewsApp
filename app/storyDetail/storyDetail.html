@@ -1,1 +1,40 @@
-<pre>{{model.storyDetail|json}}</pre>
+<md-toolbar>
+	<div class="md-toolbar-tools">
+        <md-button class="md-icon-button" ng-click="model.viewTopStories()">
+            <md-icon>arrow_back</md-icon>
+        </md-button>
+
+		<span>Story Detail</span>
+	</div>
+</md-toolbar>
+
+<md-content class="layout-padding md-hue-1">
+    <div class="detailHeader">
+        <h2 class="mainHeader">{{model.storyDetail.title}}</h2>
+        <div class="subHeader">By {{model.storyDetail.by}}, {{model.storyDetail.time * 1000 | date:'dd/MM/yyyy h:mm a'}}</div>
+    </div>
+
+    <div layout="column" layout-align="space-between none" class="storyDetail">
+        <div layout="row">
+            <span flex="15">ID</span>
+            <span flex="85">{{model.storyDetail.id}}</span>
+        </div>
+
+        <div layout="row">
+            <span flex="15">URL</span>
+            <a flex="75" flex-gt-sm="50" class="wordWrap" ng-click="model.openUrl(model.storyDetail.url)">
+                {{model.storyDetail.url}}
+            </a>
+            <span flex="10">
+                <md-button class="md-icon-button" ng-click="model.openUrl(model.storyDetail.url)">
+                    <md-icon class="material-icons">open_in_new</md-icon>	
+                </md-button>
+            </span>
+        </div>
+
+        <div layout="row">
+            <span flex="15">Score</span>
+            <span flex="85">{{model.storyDetail.score}}</span>
+        </div>
+    </div>
+</md-content>

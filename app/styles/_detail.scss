@@ -1,0 +1,21 @@
+.detailHeader {
+    .mainHeader {
+        margin: 15px 0 0;
+
+        &:last-child {
+            margin-bottom: 15px;
+        }
+    }
+
+    .subHeader {
+        font-size: 14px;
+        color: transparentize(#000, 0.4);
+        margin-bottom: 15px;
+    }
+}
+
+.storyDetail {
+    > div {
+        padding: 4px;
+    }
+}
